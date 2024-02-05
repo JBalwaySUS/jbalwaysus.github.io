@@ -1,0 +1,513 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s;
+}
+
+.dark-mode{
+    background-color: #222222;
+    color: #fff;
+
+}
+
+.navbar {
+    background-color: #0468aa;
+    overflow: hidden;
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar a {
+    float: left;
+    font-size: 30px;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar .icon {
+    display: none;
+}
+
+.dark-mode .navbar {
+    background-color: #b10000;
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        height: 3.5vh;
+    }
+    
+}
+
+.dark-mode-switch {
+    position: fixed;
+    top: 1%;
+    right: 10px;
+    float: right;
+    cursor: pointer;
+    width: 40px;
+    height: 18px;
+    background-color: #383838;
+    border-radius: 15px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.dark-mode-slider {
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translateX(0px);
+    transition: transform 0.3s;
+}
+
+.dark-mode-switch.active {
+    background-color: #dbdbdb;
+}
+
+.dark-mode-switch.active .dark-mode-slider {
+    background-color: #383838;
+    transform: translateX(20px);
+}
+
+
+.container {
+    display: flex;
+}
+
+.image-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.text-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.flex-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+#aboutme {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#aboutme::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/aboutme.jpeg') center/cover no-repeat;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+
+.overlay-text {
+    position: absolute;
+    padding-left: 16px;
+    text-align: left;
+    color: #080808;
+}
+
+.content {
+    max-width: 800px;
+}
+
+#aboutme-spacer {
+    height: 500vh;
+}
+
+.content-container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.text-content2 {
+    text-align: left;
+    padding-left: 10%;
+    max-width: calc(50% - 16px);
+}
+
+.image-container2 {
+    flex-grow: 1;
+    align-items: right;
+}
+
+
+
+#hp {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1000px) {
+    #aboutme{
+        height: 40vh;
+    }
+    .content-container2 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content2, .image-container2 {
+        max-width: 100%; 
+        margin-bottom: 20px; 
+    }
+}
+
+#educational-background {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#educational-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/edubg.jpeg') center/cover no-repeat;
+    filter: blur(8px); 
+    z-index: -1; 
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+.edubgtext {
+    display: flex;
+    justify-content: center;
+    font-size: xxx-large;
+}
+
+.edubgtable {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.edubgtable table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+@media (max-width: 1000px) {
+    #educational-background {
+        font-size: x-large;
+        height: 30vh;
+    }
+
+    .edubgtable th, td {
+
+        width: 100%;
+    }
+    
+}
+.edubgtable table td {
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: left;
+    color: white;
+}
+
+.edubgtable th {
+    padding: 16px;
+    background-color: #f2f2f2;
+    color: #080808;
+}    
+
+.edubgtable th::after {
+    color: #ddd;
+
+}
+
+@media (max-width: 1000px) {
+    .edubgtable table {
+        font-size: 30px;
+    }
+}
+
+#edubg-spacer{
+    height: 100vh;
+}
+
+#skills {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    #skills {
+        height: 30vh;
+    }
+}
+
+#skills::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/skills.jpg') center/cover no-repeat;
+    filter: blur(8px);
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.skillset1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.skillset1text {
+    padding: 16px;
+    display: flex;
+    font-size: 50px;
+    color: white;
+    width: 80%;
+    justify-content: center;
+    border: #0468aa solid 5px;
+    border-radius: 5px;
+}
+
+.skillset1text-dark{
+    border: #b10000 solid 5px;
+}
+
+@media (max-width: 1000px) {
+    .skillset1text {
+        font-size: xx-large;
+    }
+}
+
+
+#achievements {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@media (max-width: 1000px) {
+    #achievements {
+        height: 30vh;
+    }
+}
+
+#achievements::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/achievements.jpeg') center/cover no-repeat;
+    filter: blur(8px);
+    z-index: -1;
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+.achievements1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.achievements1text {
+    padding: 16px;
+    display: flex;
+    font-size: 50px;
+    color: white;
+    width: 80%;
+    justify-content: center;
+    border: #0468aa solid 5px;
+    border-radius: 5px;
+}
+
+.achievements1text-dark{
+    border: #b10000 solid 5px;
+}
+
+@media (max-width: 1000px) {
+    .achievements1text {
+        font-size: xx-large;
+    }
+}
+
+.blogpage{
+    display: flex;
+    justify-content: center;
+    padding-right: 100px;
+    padding-left: 60px;
+}
+
+.leftbox {
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border:#0468aa solid 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.leftbox-dark {
+    border:#b10000 solid 5px;
+}
+
+.postcontainer {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:#0468aa solid 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.postcontainer-dark {
+    border:#b10000 solid 5px;
+}
+
+.image-container3 {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.responsive {
+    width: 100%;
+    max-height: 250px;
+    max-width: 1000px;
+    object-fit: cover;
+}
+
+.rightbox {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    text-align: left;
+    border: #080808 solid 5px;
+    border-radius: 8px;
+    padding-left: 16px;
+}
+
+.rightbox-dark {
+    border: white solid 5px;
+}
+
+@media (max-width: 1000px) {
+    .blogpage {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .image-container3 {
+        flex-direction: column;
+    }
+    .leftbox {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .postcontainer {
+        margin-bottom: 10px;
+    }
+    .rightbox {
+        justify-content: center;
+        padding-left: 35px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .responsive {
+        width: 100%;
+        max-height: 100px;
+        max-width: 1000px;
+        object-fit: cover;
+    }
+}
+
+#resume {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-bottom: 70px;
+}
+
+.fa {
+    font-size: 30px;
+    width: 30px;
+    text-decoration: none;
+}
+
+
+.fa-twitter{
+    color: rgb(28, 150, 232);    
+}
+
+#comments-container {
+    margin-top: 20px;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment .author {
+    font-weight: bold;
+}
+
+.comment .date {
+    font-size: 12px;
+    color: #999;
+}
+
+#comment-form {
+    margin-top: 20px;
+}
+    

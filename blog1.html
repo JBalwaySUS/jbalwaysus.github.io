@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>The Perils of Automation</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Workbench&display=swap" rel="stylesheet">    
+    <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Raleway:ital,wght@0,100..900;1,100..900&family=Workbench&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/cdd6572f7c.js" crossorigin="anonymous"></script>
+</head>
+
+<script src="js/main.js"></script>
+
+<body>
+    <div class="navbar">
+        <a href="index.html#home" target="_blank"><span class="honk-unique123">Home</span></a>
+        <a href="index.html#educational-background" target="_blank"><span class="honk-unique123">Educational Background</span></a>
+        <a href="index.html#skills" target="_blank"><span class="honk-unique123">Skills</span></a>
+        <a href="index.html#achievements" target="_blank"><span class="honk-unique123">Acheivements</span></a>
+        <a href="index.html#blog" target="_blank"><span class="honk-unique123">Blog</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            &#9776;
+        </a>
+        <div class="dark-mode-switch" onclick="toggleDarkMode()">
+            <div class="dark-mode-slider"></div>
+        </div>
+    </div>
+
+    <div style="padding-top: 100px; padding-right: 16px; padding-bottom: 16px; display: flex; justify-content: center;">
+        <div class="pacifico-regular" style="font-size: 108px; text-align: center;">
+            The Perils of Automation
+        </div>
+    </div>
+
+    <section class="content-container2"> 
+        <div class="text-content2" style="padding: 16px;">
+            <div class="pacifico-regular" style="font-size: 24px; margin-right: 10px; overflow: hidden;">
+                In the world of Automation, one must think about how much Automations is too much. 
+                Automating every sing le thing can mean the loss of jobs for millions of people.
+                Thus we must ensure that people have at least a Universal Basic Income just enough to survive.
+            </div>
+        </div>
+        <div class="image-container2">
+            <img src="css/images/edubg.jpeg"  width="auto" height= "auto" id="hp"/>
+        </div>         
+    </section>
+
+    <div style="display: flex; flex-direction: row; padding-left: 16px; padding-right: 16px; justify-content: flex-end;">
+        <div style="width: 88%; padding-left: 16px;">
+            <div class="honk-unique123" style="font-size: 60px;">
+                Comments
+            </div>
+            <div id="comments-container" style="padding-right: 16px;"></div>
+
+            <div>
+                <form id="comment-form">
+                    <label for="name"><span class="pacifico-regular" style="font-size: 20px;">Name:&emsp;&nbsp;</span></label>
+                    <input style="margin-bottom: 16px; width: 40%; border: black solid 1px;" type="text" id="name" name="name" required>
+                    <br>
+                    <label for="comment"><span class="pacifico-regular" style="font-size: 20px;">Comment:</span></label>
+                    <textarea id="comment" name="comment" required style="width: 80%; border: black solid 1px;"></textarea>
+                    <br>
+                    <button style="margin-top: 16px;" type="submit"><span class="oswald-uniquifier" style="font-size: 20px;">Post Comment</button>
+
+                    <button style="margin-top: 16px; margin-bottom: 10%;" type="submit" id="clear-button"><span class="oswald-uniquifier" style="font-size: 20px;">Clear Comments</button>
+                </form>
+            </div>    
+        </div>
+        <div style="display: flex; justify-content: flex-end; width: 18%; padding: 16px;">
+            <div>
+                <button id="likeButton" onclick="toggleLike()" style="padding: 10px; border-radius: 30px; margin-right: 16px;"><span id="likeCount1">Like 0</span></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // LIKE BUTTON FUNCTIONALITY
+
+        let likeCount = parseInt(localStorage.getItem('likeCount1')) || 0;
+        let isLiked = localStorage.getItem('isLiked1') === 'true';
+        updateUI();
+
+        function toggleLike() {
+            isLiked = !isLiked;
+
+            if (isLiked) {
+                likeCount++;
+            } else {
+                likeCount--;
+            }
+
+            localStorage.setItem('likeCount1', likeCount);
+            localStorage.setItem('isLiked1', isLiked);
+            updateUI();
+        }
+
+        function updateUI() {
+            const likeButton = document.getElementById('likeButton');
+            const likeCountElement = document.getElementById('likeCount1');
+
+            if (likeCountElement) {
+                likeCountElement.textContent = likeCount;
+            }
+
+            if (isLiked) {
+                likeButton.textContent = `Liked ${likeCount}`;
+            } else {
+                likeButton.textContent = `Like ${likeCount}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateUI());
+
+        //COMMENT SECTION FUNCTIONALITY
+
+        const commentForm = document.getElementById("comment-form");
+        const commentsContainer = document.getElementById("comments-container");
+        let storedComments = JSON.parse(localStorage.getItem("comments1")) || [];
+
+        storedComments.forEach(comment => {
+        const newCommentElement = document.createElement("div");
+        newCommentElement.classList.add("comment");
+        newCommentElement.innerHTML = `
+            <div class="author"><span class="math-inline">${comment.name}</div>
+            <div class="date"></span>${comment.date}</div>
+            <p>${comment.text}</p>
+            <button class="delete-button">Delete</button>
+        `;
+        commentsContainer.appendChild(newCommentElement);
+        });
+
+        commentForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const commentText = document.getElementById("comment").value;
+
+        const newComment = {
+            name: name,
+            text: commentText,
+            date: new Date().toLocaleString()
+        };
+
+
+        storedComments.push(newComment);
+        localStorage.setItem("comments1", JSON.stringify(storedComments));
+
+        const newCommentElement = document.createElement("div");
+        newCommentElement.classList.add("comment");
+        newCommentElement.innerHTML = `
+            <div class="author"><span class="math-inline">${newComment.name}</div\>
+            <div class="date"></span>${newComment.date}</div>
+            <p>${commentText}</p>
+            <button class="delete-button">Delete</button>
+        `;
+        commentsContainer.appendChild(newCommentElement);
+
+        commentForm.reset();
+        });
+
+        commentsContainer.addEventListener("click", (event) => {
+        if (event.target.classList.contains("delete-button")) {
+            const commentElement = event.target.parentElement;
+            const commentIndex = storedComments.findIndex(comment => comment.text === commentElement.querySelector("p").textContent);
+
+            if (commentIndex !== -1) {
+                storedComments.splice(commentIndex, 1);
+                localStorage.setItem("comments1", JSON.stringify(storedComments));
+                commentElement.remove();
+            }
+        }
+        });
+
+        function clearComments() {
+        localStorage.removeItem("comments");
+        commentsContainer.innerHTML = "";
+        storedComments = [];
+        }
+
+        const clearButton = document.getElementById("clear-button");
+        clearButton.addEventListener("click", clearComments);
+    </script>
+</body>
+</html>
