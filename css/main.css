@@ -4,6 +4,17 @@ body {
     transition: background-color 0.3s;
 }
 
+#home{
+    padding-left:16px;
+    padding-right: 16px; 
+    padding-top: 100px; 
+    text-align: center;
+    height: 100vh
+}
+
+#dynamicText{
+    font-size: 100px;
+}
 .dark-mode{
     background-color: #222222;
     color: #fff;
